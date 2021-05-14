@@ -1,4 +1,4 @@
 {
-  "start": "Hi!",
+  "start": "Hi! I'm @RandopicBot\n\n/cat - random cat pic/fig\n/dog - random dog pic/gif\n/fox - random fox pic\n/shibe - random photo with <a href=\"https://en.wikipedia.org/wiki/Shiba_Inu\">Shibe</a>",
   "picture_not_found": "Oops, picture not found"
 }
