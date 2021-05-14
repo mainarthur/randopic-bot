@@ -9,7 +9,6 @@ class PictureApi {
    */
   async getRandomPicture() {
     throw new Error('Abstract Method')
-    return ''
   }
 }
 

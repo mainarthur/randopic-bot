@@ -1,4 +1,3 @@
-const TelegramBot = require('node-telegram-bot-api')
 const bot = require('../bots/bot')
 const t18g = require('../locales')
 
@@ -10,7 +9,7 @@ class StartCommand extends Command {
   }
 
   /**
-   * @returns {TelegramBot.ChatAction}
+   * @returns {import('node-telegram-bot-api').ChatAction}
    */
   get action() {
     return 'typing'

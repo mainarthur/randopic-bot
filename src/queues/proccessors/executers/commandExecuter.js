@@ -1,18 +1,14 @@
-const TelegramBot = require('node-telegram-bot-api')
-
 const bot = require('../../../bots/bot')
 
-const UserCommand = require('../../../types/UserCommand')
 const Timedelta = require('../../../types/Timedelta')
 
 const commandsRoutes = require('../../../commands')
 const logger = require('../../../logger')
-const Command = require('../../../commands/Command')
 
 /**
  *
- * @param {UserCommand} command
- * @param {TelegramBot.Message} message
+ * @param {import('../../../types/UserCommand')} command
+ * @param {import('node-telegram-bot-api').Message} message
  */
 const commandExecuter = async (command, message) => {
   const { commandName, argument } = command
@@ -23,7 +19,7 @@ const commandExecuter = async (command, message) => {
   if (!commandsRoutes[commandName]) return
 
   /**
-   * @type {Command}
+   * @type {import('../../../commands/Command')}
    */
   const commandHandler = commandsRoutes[commandName]
 
@@ -32,7 +28,7 @@ const commandExecuter = async (command, message) => {
   }
 
   /**
-   * @type {TelegramBot.Message}
+   * @type {import('node-telegram-bot-api').Message}
    */
   const responseMessage = await commandHandler.method({
     chatId,
