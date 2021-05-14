@@ -4,8 +4,8 @@
 
 # Requirements
 
-1. Node.js (tested on 16)
-2. npm (tested on 7.12.1)
+1. Node.js (tested v16.0.0)
+2. npm (tested v7.12.1)
 
 # How to start
 
