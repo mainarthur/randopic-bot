@@ -22,6 +22,7 @@ const isBoolean = (arg) => {
  */
 const isInteger = (arg) => {
   return (
+    arg === parseInt(arg) &&
     typeof arg === 'number' &&
     arg > Number.MIN_SAFE_INTEGER &&
     arg < Number.MAX_SAFE_INTEGER
