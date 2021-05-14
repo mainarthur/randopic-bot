@@ -1,6 +1,6 @@
 # Randopic Bot
 
-[Telegram Bot](@RandopicBot) that sends random pictures!
+[Telegram Bot](https://t.me/RandopicBot) that sends random pictures!
 
 # Requirements
 
