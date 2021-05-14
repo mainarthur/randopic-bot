@@ -27,7 +27,7 @@ class Command {
    * @returns {Promise<Object>}
    */
   async method(_payload) {
-    throw new Error('Asbtract method')
+    throw new Error('Abstract method')
   }
 }
 

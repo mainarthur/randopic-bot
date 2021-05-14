@@ -3,13 +3,15 @@ const { isString } = require('../util/type')
 const api = require('./api')
 const PictureApi = require('./PictureApi')
 
-const CAT_API_BASE_URL = 'https://aws.random.cat/meow'
+const {
+  BASE_APIS: { CAT: CAT_BASE_API_URL },
+} = require('../../config.json')
 
 class CatPictureApi extends PictureApi {
   async getRandomPicture() {
-    const resposne = await api.get(CAT_API_BASE_URL)
-    if (isString(resposne.data?.file)) {
-      return resposne.data?.file
+    const response = await api.get(CAT_BASE_API_URL)
+    if (isString(response.data?.file)) {
+      return response.data?.file
     }
     return EMPTY_STRING
   }

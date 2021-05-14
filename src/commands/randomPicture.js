@@ -1,7 +1,7 @@
 const path = require('path')
 
 const bot = require('../bots/bot')
-const { EMPTY_STRING } = require('../constants')
+const { EMPTY_STRING, GIF_EXT, ChatAction, ParseMode } = require('../constants')
 const t18g = require('../locales')
 const Command = require('./Command')
 
@@ -18,7 +18,7 @@ class RandomPictureCommand extends Command {
    * @returns {import('node-telegram-bot-api').ChatAction}
    */
   get action() {
-    return 'upload_photo'
+    return ChatAction.uploadPhoto
   }
 
   /**
@@ -31,12 +31,12 @@ class RandomPictureCommand extends Command {
     const pictureUrl = await this.api.getRandomPicture()
 
     if (pictureUrl === EMPTY_STRING) {
-      return bot.sendMessage(chatId, t18g(locale)`pictire_not_found`, {
-        parse_mode: 'HTML',
+      return bot.sendMessage(chatId, t18g(locale)`picture_not_found`, {
+        parse_mode: ParseMode.HTML,
       })
     }
 
-    if (path.extname(pictureUrl) === '.gif') {
+    if (path.extname(pictureUrl) === GIF_EXT) {
       return bot.sendAnimation(chatId, pictureUrl)
     }
 

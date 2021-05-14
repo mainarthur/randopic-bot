@@ -3,13 +3,15 @@ const { isString } = require('../util/type')
 const api = require('./api')
 const PictureApi = require('./PictureApi')
 
-const DOG_API_BASE_URL = 'https://random.dog/woof.json'
+const {
+  BASE_APIS: { DOG: DOG_BASE_API_URL },
+} = require('../../config.json')
 
 class DogPictureApi extends PictureApi {
   async getRandomPicture() {
-    const resposne = await api.get(DOG_API_BASE_URL)
-    if (isString(resposne.data?.url)) {
-      return resposne.data?.url
+    const response = await api.get(DOG_BASE_API_URL)
+    if (isString(response.data?.url)) {
+      return response.data?.url
     }
     return EMPTY_STRING
   }

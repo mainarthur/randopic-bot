@@ -15,5 +15,11 @@
       "duration": 1000,
       "max": 30
     }
+  },
+  "BASE_APIS": {
+    "DOG": "https://random.dog/woof.json",
+    "CAT": "https://aws.random.cat/meow",
+    "FOX": "https://randomfox.ca/floof/",
+    "SHIBE": "http://shibe.online/api/shibes?count=1&urls=true&httpsUrls=true"
   }
 }

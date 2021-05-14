@@ -3,13 +3,15 @@ const { isString } = require('../util/type')
 const api = require('./api')
 const PictureApi = require('./PictureApi')
 
-const FOX_API_BASE_URL = 'https://randomfox.ca/floof/'
+const {
+  BASE_APIS: { FOX: FOX_BASE_API_URL },
+} = require('../../config.json')
 
 class FoxPictureApi extends PictureApi {
   async getRandomPicture() {
-    const resposne = await api.get(FOX_API_BASE_URL)
-    if (isString(resposne.data?.image)) {
-      return resposne.data?.image
+    const response = await api.get(FOX_BASE_API_URL)
+    if (isString(response.data?.image)) {
+      return response.data?.image
     }
     return EMPTY_STRING
   }

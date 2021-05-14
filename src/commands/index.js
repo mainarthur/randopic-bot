@@ -6,6 +6,11 @@ const DogPictureApi = require('../api/DogPictureApi')
 const FoxPictureApi = require('../api/FoxPictureApi')
 const ShibePictureApi = require('../api/ShibePictureApi')
 
+/**
+ * @typedef {String} CommandName
+ *
+ * @type {Object.<CommandName, import('./Command')>}
+ */
 const commandsRoutes = {
   start: new StartCommand(),
   cat: new RandomPictureCommand(new CatPictureApi()),

@@ -12,7 +12,7 @@ const isString = (arg) => {
  * @returns {arg is boolean} true if arg is boolean
  */
 const isBoolean = (arg) => {
-  return arg === true || arg === false
+  return typeof arg === 'boolean'
 }
 
 /**

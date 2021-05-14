@@ -4,13 +4,8 @@ const commandExecuter = require('./executers/commandExecuter')
 /**
  *  @param {import('bull').Job<import("node-telegram-bot-api").Message>}  job
  */
-const messageJobProcessor = async (job) => {
+const messageJobProcessor = async ({ data: message }) => {
   try {
-    /**
-     * @type { {data: import('node-telegram-bot-api').Message}}
-     */
-    const { data: message } = job
-
     const command = commandParser(message)
 
     if (command) {

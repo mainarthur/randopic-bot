@@ -10,8 +10,8 @@ api.interceptors.request.use((request) => {
   return request
 })
 
-api.interceptors.response.use((resposne) => {
-  return resposne
+api.interceptors.response.use((response) => {
+  return response
 })
 
 module.exports = api

@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
 
-const { JSON_EXT } = require('../constants')
+const { JSON_EXT, DECIMAL_RADIX } = require('../constants')
 const { DEFAULT_LOCALE } = require('../../config.json')
 const logger = require('../logger')
 
@@ -45,7 +45,7 @@ function t18g(locale) {
     if (!(insertionsMatch && substitutions.length)) return text
 
     const insertions = insertionsMatch.map((insertion) => ({
-      index: parseInt(insertion.substring(1, insertion.length), 10),
+      index: parseInt(insertion.substring(1, insertion.length), DECIMAL_RADIX),
       insertion,
     }))
 

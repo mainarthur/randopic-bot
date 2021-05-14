@@ -1,3 +1,5 @@
+const { isString } = require('./type')
+
 // Matches uppercase letter
 const uppercaseRegex = /([A-Z])/g
 
@@ -7,18 +9,19 @@ const uppercaseRegex = /([A-Z])/g
  * @returns {String | Object} - string or object with keys in snake case
  */
 function snakeCase(arg) {
-  if (typeof arg.constructor === 'string') {
+  if (isString(arg)) {
     return arg.replace(uppercaseRegex, '_$1').toLowerCase()
   }
 
-  const newObject = {}
-  const keys = Object.keys(arg)
+  return Object.keys(arg).reduce((acc, key) => {
+    if (arg[key] && typeof arg[key] === 'object') {
+      acc[snakeCase(key)] = snakeCase(arg[key])
+    } else {
+      acc[snakeCase(key)] = arg[key]
+    }
 
-  keys.forEach((key) => {
-    newObject[snakeCase(key)] = arg[key]
-  })
-
-  return newObject
+    return acc
+  }, {})
 }
 
 module.exports = { snakeCase }
