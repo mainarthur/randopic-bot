@@ -17,6 +17,17 @@ cd randopic-bot
 npm i
 ```
 
+Rename config.template.json to config.json:
+
+```bash
+mv config.template.json config.json
+```
+
+Edit config.json:
+
+1. Insert your bot token
+2. Change outher settings as you want
+
 and start with this command:
 
 ```bash
