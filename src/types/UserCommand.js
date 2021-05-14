@@ -1,6 +1,6 @@
 const { AT_SIGN, NOT_FOUND_INDEX, STRING_START_INDEX } = require('../constants')
 
-class Command {
+class UserCommand {
   /**
    *
    * @param {string} commandName - /commandName[@username]
@@ -29,7 +29,7 @@ class Command {
     /**
      * @property {string} commandName - /commandName
      */
-    this.commandName = Command.clearUsernameFromCommand(commandName)
+    this.commandName = UserCommand.clearUsernameFromCommand(commandName)
 
     /**
      * @property {string | null | undefined} argument - /commandName argument
@@ -42,4 +42,4 @@ class Command {
   }
 }
 
-module.exports = Command
+module.exports = UserCommand

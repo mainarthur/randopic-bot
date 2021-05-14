@@ -1,4 +1,4 @@
-const Command = require('../types/Command')
+const UserCommand = require('../types/UserCommand')
 const { SPACE } = require('../constants')
 const { isString } = require('./type')
 
@@ -6,7 +6,7 @@ const { isString } = require('./type')
  *
  * @param {import('node-telegram-bot-api').Message} msg
  *
- * @returns {Command}
+ * @returns {UserCommand}
  */
 const commandParser = (msg) => {
   const {
@@ -30,7 +30,7 @@ const commandParser = (msg) => {
       if (isString(text[entity.length]) && text[entity.length] !== SPACE) {
         return null
       }
-      return new Command(
+      return new UserCommand(
         text.substring(1, entity.length),
         text.substring(entity.length + 1).trim(),
       )

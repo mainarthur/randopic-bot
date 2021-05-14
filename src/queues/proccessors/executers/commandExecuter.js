@@ -1,16 +1,18 @@
+const TelegramBot = require('node-telegram-bot-api')
+
 const bot = require('../../../bots/bot')
 
-const Command = require('../../../types/Command')
+const UserCommand = require('../../../types/UserCommand')
 const Timedelta = require('../../../types/Timedelta')
 
-const { snakeCase } = require('../../../util/case')
 const commandsRoutes = require('../../../commands')
 const logger = require('../../../logger')
+const Command = require('../../../commands/Command')
 
 /**
  *
- * @param {Command} command
- * @param {import('node-telegram-bot-api').Message} message
+ * @param {UserCommand} command
+ * @param {TelegramBot.Message} message
  */
 const commandExecuter = async (command, message) => {
   const { date } = message
@@ -19,6 +21,9 @@ const commandExecuter = async (command, message) => {
 
   if (!commandsRoutes[command.commandName]) return
 
+  /**
+   * @type {Command}
+   */
   const commandHandler = commandsRoutes[command.commandName]
 
   if (commandHandler.action) {
@@ -26,9 +31,13 @@ const commandExecuter = async (command, message) => {
   }
 
   /**
-   * @type {import('node-telegram-bot-api').Message}
+   * @type {TelegramBot.Message}
    */
-  const responseMessage = await commandHandler.method(command.argument, message)
+  const responseMessage = await commandHandler.method(
+    chatId,
+    command.argument,
+    message,
+  )
 
   logger.log(
     `[${new Date().toLocaleString()}]${
