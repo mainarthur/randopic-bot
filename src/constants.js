@@ -4,6 +4,7 @@ const AT_SIGN = '@'
 const NOT_FOUND_INDEX = -1
 const SPACE = ' '
 const EMPTY_STRING = ''
+const JSON_EXT = '.json'
 
 module.exports = Object.freeze({
   STRING_START_INDEX,
@@ -12,4 +13,5 @@ module.exports = Object.freeze({
   SPACE,
   NOT_FOUND_INDEX,
   EMPTY_STRING,
+  JSON_EXT,
 })

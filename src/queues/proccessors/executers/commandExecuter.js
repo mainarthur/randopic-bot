@@ -15,16 +15,17 @@ const Command = require('../../../commands/Command')
  * @param {TelegramBot.Message} message
  */
 const commandExecuter = async (command, message) => {
+  const { commandName, argument } = command
   const { date } = message
   const { id: chatId } = message.chat
-  const { id: userId } = message.from ?? {}
+  const { id: userId, language_code: locale } = message.from ?? {}
 
-  if (!commandsRoutes[command.commandName]) return
+  if (!commandsRoutes[commandName]) return
 
   /**
    * @type {Command}
    */
-  const commandHandler = commandsRoutes[command.commandName]
+  const commandHandler = commandsRoutes[commandName]
 
   if (commandHandler.action) {
     await bot.sendChatAction(chatId, commandHandler.action)
@@ -33,11 +34,12 @@ const commandExecuter = async (command, message) => {
   /**
    * @type {TelegramBot.Message}
    */
-  const responseMessage = await commandHandler.method(
+  const responseMessage = await commandHandler.method({
     chatId,
-    command.argument,
+    argument,
     message,
-  )
+    locale,
+  })
 
   logger.log(
     `[${new Date().toLocaleString()}]${

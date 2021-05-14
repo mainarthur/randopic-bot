@@ -1,4 +1,13 @@
 const TelegramBot = require('node-telegram-bot-api')
+
+/**
+ * @typedef {Object} Payload
+ * @property {Number} [chatId]
+ * @property {String} [argument]
+ * @property {String} [locale]
+ * @property {TelegramBot.Message} [message]
+ */
+
 /**
  * @abstract
  */
@@ -16,13 +25,11 @@ class Command {
   /**
    * @abstract
    *
-   * @param {Number} [chatId]
-   * @param {String} [argument]
-   * @param {TelegramBot.Message} [message]
+   * @param {Payload} payload
    *
    * @returns {Promise<Object>}
    */
-  async method(chatId, argument, message) {
+  async method(payload) {
     throw new Error('Asbtract method')
 
     return {}

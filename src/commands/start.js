@@ -1,5 +1,6 @@
 const TelegramBot = require('node-telegram-bot-api')
 const bot = require('../bots/bot')
+const t18g = require('../locales')
 
 const Command = require('./Command')
 
@@ -16,10 +17,12 @@ class StartCommand extends Command {
   }
 
   /**
-   * @param {Number} chatId
+   * @param {import('./Command').Payload} payload
    */
-  async method(chatId) {
-    return bot.sendMessage(chatId, 'Hi!')
+  async method({ chatId, locale }) {
+    return bot.sendMessage(chatId, t18g(locale)`start`, {
+      parse_mode: 'HTML',
+    })
   }
 }
 
