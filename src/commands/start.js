@@ -21,6 +21,7 @@ class StartCommand extends Command {
   async method({ chatId, locale }) {
     return bot.sendMessage(chatId, t18g(locale)`start`, {
       parse_mode: 'HTML',
+      disable_web_page_preview: true,
     })
   }
 }
