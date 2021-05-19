@@ -16,8 +16,8 @@ const commandParser = (msg) => {
     caption_entities,
   } = msg
 
-  const text = messageText ?? caption
-  const entities = textEntites ?? caption_entities
+  const text = messageText ?? caption ?? ''
+  const entities = textEntites ?? caption_entities ?? []
 
   if (!text && !entities) {
     return null
